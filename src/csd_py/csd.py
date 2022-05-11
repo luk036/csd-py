@@ -22,7 +22,6 @@ def to_csd(num: float, places: int) -> str:
         str: containing the CSD value
 
     Examples:
-
         >>> to_csd(28.5, 2)
         '+00-00.+0'
         >>> to_csd(-0.5, 2)
@@ -71,7 +70,6 @@ def to_decimal(csd_str: str) -> float:
         float: decimal value of the CSD format
 
     Examples:
-
         >>> to_decimal("+00-00.+")
         28.5
         >>> to_decimal("0.-")
@@ -113,7 +111,6 @@ def to_csdfixed(num: float, nnz: int) -> str:
         str: containing the CSD value
 
     Examples:
-    
         >>> to_csdfixed(28.5, 4)
         '+00-00.+'
         >>> to_csdfixed(-0.5, 4)
