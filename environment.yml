@@ -1,0 +1,6 @@
+name: csd-py
+channels:
+  - conda-forge
+dependencies:
+  - pytest
+  - pytest-benchmark
