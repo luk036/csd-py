@@ -1,5 +1,6 @@
-from csd_py.csd import to_csd, to_decimal
 import pytest
+
+from csd_py.csd import to_csd, to_decimal
 
 
 @pytest.mark.randomize(d=int, ncalls=5)

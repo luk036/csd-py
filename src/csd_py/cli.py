@@ -24,7 +24,6 @@ import sys
 from csd_py import __version__
 from csd_py.csd import to_csd, to_csdfixed, to_decimal
 
-
 __author__ = "Wai-Shing Luk"
 __copyright__ = "Wai-Shing Luk"
 __license__ = "MIT"
@@ -48,8 +47,7 @@ def parse_args(args):
     Returns:
       :obj:`argparse.Namespace`: command line parameters namespace
     """
-    parser = argparse.ArgumentParser(
-        description="Converts a decimal to a CSD format")
+    parser = argparse.ArgumentParser(description="Converts a decimal to a CSD format")
     parser.add_argument(
         "--version",
         action="version",
@@ -62,7 +60,7 @@ def parse_args(args):
         help="a decimal number",
         type=float,
         metavar="FLOAT",
-        default=float('Inf'),
+        default=float("Inf"),
     )
     parser.add_argument(
         "-f",
@@ -71,7 +69,7 @@ def parse_args(args):
         help="a decimal number",
         type=float,
         metavar="FLOAT",
-        default=float('Inf'),
+        default=float("Inf"),
     )
     parser.add_argument(
         "-d",
@@ -147,9 +145,9 @@ def main(args):
     args = parse_args(args)
     setup_logging(args.loglevel)
     _logger.debug("Starting crazy calculations...")
-    if args.decimal != float('Inf'):
+    if args.decimal != float("Inf"):
         print("The ans is {}".format(to_csd(args.decimal, args.places)))
-    if args.decimal2 != float('Inf'):
+    if args.decimal2 != float("Inf"):
         print("The ans is {}".format(to_csdfixed(args.decimal2, args.nnz)))
     if args.csdstr != "":
         print("The ans is {}".format(to_decimal(args.csdstr)))
