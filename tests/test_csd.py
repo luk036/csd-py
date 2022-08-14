@@ -1,5 +1,3 @@
-import pytest
-
 from csd_py.csd import to_csd, to_decimal
 
 
