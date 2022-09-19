@@ -88,11 +88,41 @@ def to_decimal(csd_str: str) -> float:
         elif c == ".":
             loc = i + 1
         else:
-            raise ValueError
+            pass  # ignore other characters
 
     if loc != 0:
         num /= pow(2.0, len(csd_str) - loc)
 
+    return num
+
+
+def to_decimal_i(csd_str: str) -> int:
+    """Convert the argument to a decimal number
+
+    Original author: Harnesser
+    <https://sourceforge.net/projects/pycsd/>
+    License: GPL2
+
+    Args:
+        csd_str (str): string containing the CSD value
+
+    Returns:
+        float: decimal value of the CSD format
+
+    Examples:
+        >>> to_decimal_i("+00-00")
+        28
+    """
+    num: int = 0
+    for c in csd_str:
+        if c == "0":
+            num *= 2
+        elif c == "+":
+            num = num * 2 + 1
+        elif c == "-":
+            num = num * 2 - 1
+        else:
+            pass  # ignore other characters
     return num
 
 
