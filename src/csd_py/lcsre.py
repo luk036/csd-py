@@ -2,9 +2,9 @@
 # non-overlapping substring
 
 # Returns the longest repeating non-overlapping
-# substring in str
-def longestRepeatedSubstring(str):
-    n = len(str)
+# substring in csd_str
+def longest_repeated_substring(csd_str: str) -> str:
+    n = len(csd_str)
     LCSRe = [[0 for x in range(n + 1)]
              for y in range(n + 1)]
 
@@ -18,7 +18,7 @@ def longestRepeatedSubstring(str):
 
             # (j-i) > LCSRe[i-1][j-1] to remove
             # overlapping
-            if (str[i - 1] == str[j - 1] and
+            if (csd_str[i - 1] == csd_str[j - 1] and
                     LCSRe[i - 1][j - 1] < (j - i)):
                 LCSRe[i][j] = LCSRe[i - 1][j - 1] + 1
 
@@ -38,14 +38,14 @@ def longestRepeatedSubstring(str):
     if (res_length > 0):
         for i in range(index - res_length + 1,
                        index + 1):
-            res = res + str[i - 1]
+            res = res + csd_str[i - 1]
 
     return res
 
 
 # Driver Code
 if __name__ == "__main__":
-    str = "+-00+-00+-00+-0"
-    print(longestRepeatedSubstring(str))
+    csd_str = "+-00+-00+-00+-0"
+    print(longest_repeated_substring(csd_str))
 
 # This code is contributed by ita_c
