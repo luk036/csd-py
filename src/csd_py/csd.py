@@ -59,6 +59,49 @@ def to_csd(num: float, places: int) -> str:
 
     return csd_str
 
+def to_csd_i(num: int) -> str:
+    """Convert the argument `num` to a string in CSD Format.
+
+    Original author: Harnesser
+    <https://sourceforge.net/projects/pycsd/>
+    License: GPL2
+
+    Args:
+        num (int): decimal value to be converted to CSD format
+
+    Returns:
+        str: containing the CSD value
+
+    Examples:
+        >>> to_csd_i(28.5)
+        '+00-00'
+    """
+
+    # figure out binary range, special case for 0
+    if num == 0:
+        return "0"
+
+    absnum = abs(num)
+    n = ceil(log(absnum * 1.5, 2))
+    csd_str = ""
+    pow2n = pow(2, n)
+    while n > 0:
+        # convert the number
+        pow2n_half = pow2n / 2
+        d = 3 * num
+        if d > pow2n:
+            csd_str += "+"
+            num -= pow2n_half
+        elif d < -pow2n:
+            csd_str += "-"
+            num += pow2n_half
+        else:
+            csd_str += "0"
+        pow2n = pow2n_half
+        n -= 1
+
+    return csd_str
+
 
 def to_decimal(csd_str: str) -> float:
     """Convert the argument to a decimal number
