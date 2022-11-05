@@ -40,8 +40,9 @@ def to_csd(num: float, places: int) -> str:
         rem = ceil(log(absnum * 1.5, 2))
         csd = ""
     pow2n = pow(2, rem)
-    while rem > -places:
-        if rem == 0:
+    eps = pow(2, -places)
+    while pow2n > eps:
+        if pow2n == 1:
             csd += "."
         # convert the number
         pow2n_half = pow2n / 2
@@ -55,7 +56,6 @@ def to_csd(num: float, places: int) -> str:
         else:
             csd += "0"
         pow2n = pow2n_half
-        rem -= 1
 
     return csd
 
@@ -70,6 +70,10 @@ def to_csd_i(num: int) -> str:
     Args:
         num (int): decimal value to be converted to CSD format
 
+    2**rem * 2 = |n| * 3 = remnew * 2
+    remnew > 1
+    remnew /= 2
+
     Returns:
         str: containing the CSD value
 
@@ -82,13 +86,11 @@ def to_csd_i(num: int) -> str:
     if num == 0:
         return "0"
 
-    absnum = abs(num)
-    rem = ceil(log(absnum * 1.5, 2))
+    pow2n = 2 ** ceil(log(abs(num) * 1.5, 2))
     csd = ""
-    pow2n = pow(2, rem)
-    while rem > 0:
+    while pow2n > 1:
         # convert the number
-        pow2n_half = pow2n / 2
+        pow2n_half = pow2n // 2
         det = 3 * num
         if det > pow2n:
             csd += "+"
@@ -99,8 +101,6 @@ def to_csd_i(num: int) -> str:
         else:
             csd += "0"
         pow2n = pow2n_half
-        rem -= 1
-
     return csd
 
 
@@ -206,8 +206,8 @@ def to_csdfixed(num: float, nnz: int) -> str:
         rem = ceil(log(absnum * 1.5, 2))
         csd = ""
     pow2n = pow(2.0, rem)
-    while rem > 0 or (nnz > 0 and fabs(num) > 1e-100):
-        if rem == 0:
+    while pow2n > 1 or (nnz > 0 and fabs(num) > 1e-100):
+        if pow2n == 1:
             csd += "."
         pow2n_half = pow2n / 2
         det = 3.0 * num
@@ -222,7 +222,6 @@ def to_csdfixed(num: float, nnz: int) -> str:
         else:
             csd += "0"
         pow2n = pow2n_half
-        rem -= 1
         if nnz == 0:
             num = 0.0
     return csd
