@@ -34,28 +34,28 @@ def to_csd(num: float, places: int) -> str:
 
     absnum = fabs(num)
     if absnum < 1.0:
-        rem = 0
+        rem = 0.0
         csd = "0"
     else:
         rem = ceil(log(absnum * 1.5, 2))
         csd = ""
-    pow2n = pow(2, rem)
+    p2n = pow(2, rem)
     eps = pow(2, -places)
-    while pow2n > eps:
-        if pow2n == 1:
+    while p2n > eps:
+        if p2n == 1.0:
             csd += "."
         # convert the number
-        pow2n_half = pow2n / 2
-        det = 3 * num
-        if det > pow2n:
+        p2n_half = p2n / 2.0
+        det = 3.0 * num
+        if det > p2n:
             csd += "+"
-            num -= pow2n_half
-        elif det < -pow2n:
+            num -= p2n_half
+        elif det < -p2n:
             csd += "-"
-            num += pow2n_half
+            num += p2n_half
         else:
             csd += "0"
-        pow2n = pow2n_half
+        p2n = p2n_half
 
     return csd
 
@@ -86,21 +86,21 @@ def to_csd_i(num: int) -> str:
     if num == 0:
         return "0"
 
-    pow2n = 2 ** ceil(log(abs(num) * 1.5, 2))
+    p2n = 2 ** ceil(log(abs(num) * 1.5, 2))
     csd = ""
-    while pow2n > 1:
+    while p2n > 1:
         # convert the number
-        pow2n_half = pow2n // 2
+        p2n_half = p2n // 2
         det = 3 * num
-        if det > pow2n:
+        if det > p2n:
             csd += "+"
-            num -= pow2n_half
-        elif det < -pow2n:
+            num -= p2n_half
+        elif det < -p2n:
             csd += "-"
-            num += pow2n_half
+            num += p2n_half
         else:
             csd += "0"
-        pow2n = pow2n_half
+        p2n = p2n_half
     return csd
 
 
@@ -200,28 +200,28 @@ def to_csdfixed(num: float, nnz: int) -> str:
 
     absnum = fabs(num)
     if absnum < 1.0:
-        rem = 0
+        rem = 0.0
         csd = "0"
     else:
         rem = ceil(log(absnum * 1.5, 2))
         csd = ""
-    pow2n = pow(2.0, rem)
-    while pow2n > 1 or (nnz > 0 and fabs(num) > 1e-100):
-        if pow2n == 1:
+    p2n = pow(2.0, rem)
+    while p2n > 1.0 or (nnz > 0 and fabs(num) > 1e-100):
+        if p2n == 1.0:
             csd += "."
-        pow2n_half = pow2n / 2
+        p2n_half = p2n / 2.0
         det = 3.0 * num
-        if det > pow2n:
+        if det > p2n:
             csd += "+"
-            num -= pow2n_half
+            num -= p2n_half
             nnz -= 1
-        elif det < -pow2n:
+        elif det < -p2n:
             csd += "-"
-            num += pow2n_half
+            num += p2n_half
             nnz -= 1
         else:
             csd += "0"
-        pow2n = pow2n_half
+        p2n = p2n_half
         if nnz == 0:
             num = 0.0
     return csd
