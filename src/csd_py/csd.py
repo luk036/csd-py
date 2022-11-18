@@ -70,15 +70,11 @@ def to_csd_i(num: int) -> str:
     Args:
         num (int): decimal value to be converted to CSD format
 
-    2**rem * 2 = |n| * 3 = remnew * 2
-    remnew > 1
-    remnew /= 2
-
     Returns:
         str: containing the CSD value
 
     Examples:
-        >>> to_csd_i(28.5)
+        >>> to_csd_i(28)
         '+00-00'
     """
 
@@ -136,7 +132,7 @@ def to_decimal(csd: str) -> float:
         elif digit == ".":
             loc = pos + 1
         else:
-            pass  # ignore other characters
+            raise ValueError
 
     if loc != 0:
         num /= pow(2.0, len(csd) - loc)
@@ -170,7 +166,7 @@ def to_decimal_i(csd: str) -> int:
         elif digit == "-":
             num = num * 2 - 1
         else:
-            pass  # ignore other characters
+            raise ValueError
     return num
 
 

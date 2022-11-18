@@ -34,11 +34,19 @@ csd-py
 ======
 
 
-    Add a short description here!
+    Canonical Signed Digit Conversion Tool
 
 
-A longer description of your project goes here...
+A modification of the pycsd in https://sourceforge.net/projects/pycsd/.
+The new code is simpler and double the speed of the original one.
+See the benchmark in the tests\ directory.
 
+========
+See also
+========
+
+csd-rs (Rust porting)
+csd-xmake (C++ porting)
 
 .. _pyscaffold-notes:
 

@@ -117,7 +117,7 @@ def parse_args(args):
     return parser.parse_args(args)
 
 
-def setup_logging(loglevel):
+def setup_logging(loglevel) -> None:
     """Setup basic logging
 
     Args:
@@ -132,7 +132,7 @@ def setup_logging(loglevel):
     )
 
 
-def main(args):
+def main(args) -> None:
     """Wrapper allowing :func:`fib` to be called with string arguments in a CLI fashion
 
     Instead of returning the value from :func:`fib`, it prints the result to the
@@ -154,7 +154,7 @@ def main(args):
     _logger.info("Script ends here")
 
 
-def run():
+def run() -> None:
     """Calls :func:`main` passing the CLI arguments extracted from :obj:`sys.argv`
 
     This function can be used as entry point to create console scripts with setuptools.
