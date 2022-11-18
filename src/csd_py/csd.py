@@ -1,8 +1,5 @@
 """
-Canonical Signed Digit Functions
-
-Harnesser
-License: GPL2
+Canonical Signed Digit Conversion
 """
 from math import ceil, fabs, log
 
@@ -151,7 +148,7 @@ def to_decimal_i(csd: str) -> int:
         csd (str): string containing the CSD value
 
     Returns:
-        float: decimal value of the CSD format
+        int: decimal value of the CSD format
 
     Examples:
         >>> to_decimal_i("+00-00")
@@ -179,7 +176,7 @@ def to_csdfixed(num: float, nnz: int) -> str:
 
     Args:
         num (float): decimal value to be converted to CSD format
-        nnz (int): number of non-zerosssss
+        nnz (int): number of non-zeros
 
     Returns:
         str: containing the CSD value
