@@ -42,7 +42,7 @@ The new code is simpler and double the speed of the original one.
 See the benchmark in the tests\ directory.
 
 ========
-See also
+👀 See also
 ========
 
 csd-rs (Rust porting)
@@ -50,7 +50,7 @@ csd-xmake (C++ porting)
 
 .. _pyscaffold-notes:
 
-Note
+👉 Note
 ====
 
 This project has been set up using PyScaffold 4.1.1. For details and usage
