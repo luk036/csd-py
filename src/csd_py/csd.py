@@ -129,7 +129,7 @@ def to_decimal(csd: str) -> float:
         elif digit == ".":
             loc = pos + 1
         else:
-            raise ValueError('Work with 0, +, -, . only')
+            raise ValueError("Work with 0, +, -, . only")
 
     if loc != 0:
         num /= pow(2.0, len(csd) - loc)
@@ -163,7 +163,7 @@ def to_decimal_i(csd: str) -> int:
         elif digit == "-":
             num = num * 2 - 1
         else:
-            raise ValueError('Work with 0, +, - only')
+            raise ValueError("Work with 0, +, - only")
     return num
 
 
