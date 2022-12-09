@@ -42,18 +42,16 @@ def to_csd(num: float, places: int) -> str:
         if p2n == 1.0:
             csd += "."
         # convert the number
-        p2n_half = p2n / 2.0
-        det = 3.0 * num
+        p2n /= 2.0
+        det = 1.5 * num
         if det > p2n:
             csd += "+"
-            num -= p2n_half
+            num -= p2n
         elif det < -p2n:
             csd += "-"
-            num += p2n_half
+            num += p2n
         else:
             csd += "0"
-        p2n = p2n_half
-
     return csd
 
 
@@ -130,7 +128,6 @@ def to_decimal(csd: str) -> float:
             loc = pos + 1
         else:
             raise ValueError("Work with 0, +, -, . only")
-
     if loc != 0:
         num /= pow(2.0, len(csd) - loc)
 
@@ -202,19 +199,18 @@ def to_csdfixed(num: float, nnz: int) -> str:
     while p2n > 1.0 or (nnz > 0 and fabs(num) > 1e-100):
         if p2n == 1.0:
             csd += "."
-        p2n_half = p2n / 2.0
-        det = 3.0 * num
+        p2n /= 2.0
+        det = 1.5 * num
         if det > p2n:
             csd += "+"
-            num -= p2n_half
+            num -= p2n
             nnz -= 1
         elif det < -p2n:
             csd += "-"
-            num += p2n_half
+            num += p2n
             nnz -= 1
         else:
             csd += "0"
-        p2n = p2n_half
         if nnz == 0:
             num = 0.0
     return csd

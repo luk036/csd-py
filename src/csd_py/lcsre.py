@@ -5,8 +5,7 @@
 # substring in csd_str
 def longest_repeated_substring(csd_str: str) -> str:
     n = len(csd_str)
-    LCSRe = [[0 for x in range(n + 1)]
-             for y in range(n + 1)]
+    LCSRe = [[0 for x in range(n + 1)] for y in range(n + 1)]
 
     res = ""  # To store result
     res_length = 0  # To store length of result
@@ -18,14 +17,13 @@ def longest_repeated_substring(csd_str: str) -> str:
 
             # (j-i) > LCSRe[i-1][j-1] to remove
             # overlapping
-            if (csd_str[i - 1] == csd_str[j - 1] and
-                    LCSRe[i - 1][j - 1] < (j - i)):
+            if csd_str[i - 1] == csd_str[j - 1] and LCSRe[i - 1][j - 1] < (j - i):
                 LCSRe[i][j] = LCSRe[i - 1][j - 1] + 1
 
                 # updating maximum length of the
                 # substring and updating the finishing
                 # index of the suffix
-                if (LCSRe[i][j] > res_length):
+                if LCSRe[i][j] > res_length:
                     res_length = LCSRe[i][j]
                     index = max(i, index)
 
@@ -35,9 +33,8 @@ def longest_repeated_substring(csd_str: str) -> str:
     # If we have non-empty result, then insert
     # all characters from first character to
     # last character of string
-    if (res_length > 0):
-        for i in range(index - res_length + 1,
-                       index + 1):
+    if res_length > 0:
+        for i in range(index - res_length + 1, index + 1):
             res = res + csd_str[i - 1]
 
     return res
