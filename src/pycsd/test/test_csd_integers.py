@@ -4,8 +4,9 @@
  
 """
 
-import csd
 import unittest
+
+import csd
 
 good_values_dict = { 32  : '+00000',
                      -32 : '-00000',
